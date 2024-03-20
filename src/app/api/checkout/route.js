@@ -1,5 +1,11 @@
 import paypal from "@paypal/checkout-server-sdk";
 import { NextResponse } from "next/server";
+import Cors from "micro-cors";
+
+const cors = Cors({
+  allowMethods: ["POST"], // Permitir solo el método POST
+  origin: "*", // Permitir solicitudes desde cualquier origen, puedes ajustarlo según tus necesidades
+});
 
 const clientId = process.env.PAYPAL_CLIENT_ID;
 const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
@@ -63,3 +69,5 @@ export async function POST() {
     return NextResponse.error(error);
   }
 }
+
+export default cors(POST);
