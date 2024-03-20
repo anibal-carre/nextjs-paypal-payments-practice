@@ -10,7 +10,7 @@ const cors = Cors({
 const clientId = process.env.PAYPAL_CLIENT_ID;
 const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
 
-const enviroment = new paypal.core.SandboxEnvironment(clientId, clientSecret);
+const enviroment = new paypal.core.PayPalEnvironment(clientId);
 
 const client = new paypal.core.PayPalHttpClient(enviroment);
 
@@ -65,7 +65,9 @@ export async function POST() {
       id: response.result.id,
     });
   } catch (error) {
-    console.error("Error creating order:", error);
+    NextResponse.json({
+      message: error,
+    });
     return NextResponse.error(error);
   }
 }
