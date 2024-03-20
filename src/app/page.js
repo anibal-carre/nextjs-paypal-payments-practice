@@ -6,7 +6,9 @@ function page() {
     <div className="w-full h-screen flex justify-center items-center bg-zinc-900">
       <PayPalScriptProvider
         options={{
-          clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
+          clientId:
+            process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ||
+            " AZfvpI2k6r8BGlAelt7pqbMbftPtk3F2oc8oWeDRIkd8_6QFwXp2m21BAqSNSPWuT3C6i63_0Ed9PbO0",
         }}
       >
         <PayPalButtons
