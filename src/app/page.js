@@ -17,9 +17,12 @@ function page() {
             height: 40,
           }}
           createOrder={async () => {
-            const res = await fetch("/api/checkout", {
-              method: "POST",
-            });
+            const res = await fetch(
+              "https://nextjs-paypal-payments-practice.vercel.app/api/checkout",
+              {
+                method: "POST",
+              }
+            );
             const order = await res.json();
             console.log(order);
             return order.id;
